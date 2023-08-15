@@ -22,11 +22,11 @@ jobs:
           npm install
           npm run build
 
-      # Deploy to gh pages branch
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@92faf786f11dfa44fc366ac3eb274d193ca1af7e
-        env:
-          REPO: self
-          BRANCH: gh-pages
-          FOLDER: dist
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          path: dist
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
