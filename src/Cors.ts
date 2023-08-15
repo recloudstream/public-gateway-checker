@@ -1,7 +1,7 @@
 import fetchPonyfill from 'fetch-ponyfill'
 import { CheckBase } from './CheckBase'
 import { Log } from './Log'
-import { HASH_STRING, HASH_TO_TEST } from './constants'
+import { HASH_TO_TEST } from './constants'
 import type { GatewayNode } from './GatewayNode'
 import type { Checkable } from './types'
 
@@ -27,7 +27,7 @@ class Cors extends CheckBase implements Checkable {
       const { status } = response
       const text = await response.text()
       this.tag.title = `Response code: ${status}`
-      if (HASH_STRING === text.trim()) {
+      if (text.trim().includes('c7TphrPJk4AXlG4P_J3ZRpJ7V3yFzG_cjd-A37ih1fE')) {
         // this.parent.checked()
         this.tag.asterisk()
         this.parent.tag.classList.add('cors')
